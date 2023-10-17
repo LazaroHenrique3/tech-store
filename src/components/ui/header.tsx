@@ -1,27 +1,57 @@
-import { 
-    MenuIcon,
-    ShoppingCartIcon
-} from "lucide-react";
+import { MenuIcon, ShoppingCartIcon, LogInIcon, PercentIcon, ListOrderedIcon, HomeIcon } from "lucide-react";
 
 import { Card } from "./card";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "./sheet";
 import { Button } from "./button";
 
 const Header = () => {
-    return ( 
-      <Card className="flex items-center justify-between p-[1.875rem]">
-        <Button size="icon" variant="outline">
-            <MenuIcon/>
-        </Button>
+  return (
+    <Card className="flex items-center justify-between p-[1.875rem]">
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button size="icon" variant="outline">
+            <MenuIcon />
+          </Button>
+        </SheetTrigger>
 
-        <h1 className="text-lg font-semibold">
-            <span className="text-primary">Tech</span> Store
-        </h1>
+        <SheetContent side="left">
+          <SheetHeader className="text-left text-lg font-semibold">
+            Menu
+          </SheetHeader>
 
-        <Button size="icon" variant="outline">
-            <ShoppingCartIcon/>
-        </Button>
-      </Card>
-    );
-}
- 
+          <div className="mt-2 flex flex-col gap-2">
+            <Button variant="outline" className="w-full justify-start gap-1">
+              <LogInIcon size={16}/>
+              Fazer Login
+            </Button>
+
+            <Button variant="outline" className="w-full justify-start gap-1">
+              <HomeIcon size={16}/>
+              Início
+            </Button>
+
+            <Button variant="outline" className="w-full justify-start gap-1">
+              <PercentIcon size={16}/>
+              Ofertas
+            </Button>
+
+            <Button variant="outline" className="w-full justify-start gap-1">
+              <ListOrderedIcon size={16}/>
+              Catálogo
+            </Button>
+          </div>
+        </SheetContent>
+      </Sheet>
+
+      <h1 className="text-lg font-semibold">
+        <span className="text-primary">Tech</span> Store
+      </h1>
+
+      <Button size="icon" variant="outline">
+        <ShoppingCartIcon />
+      </Button>
+    </Card>
+  );
+};
+
 export default Header;

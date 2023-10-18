@@ -16,14 +16,6 @@ export default async function Home() {
     },
   });
 
-  const keyboards = await prismaClient.product.findMany({
-    where: {
-      category: {
-        slug: "keyboards",
-      },
-    },
-  });
-
   const mouses = await prismaClient.product.findMany({
     where: {
       category: {
@@ -32,8 +24,16 @@ export default async function Home() {
     },
   });
 
+  const headphones = await prismaClient.product.findMany({
+    where: {
+      category: {
+        slug: "headphones",
+      },
+    },
+  });
+
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-8 py-8">
       <PromoBanner
         src="/banner-home-01.png"
         alt="Até 55% de desconto esse mês"
@@ -54,20 +54,20 @@ export default async function Home() {
       />
 
       <div>
-        <SectionTitle>Teclados</SectionTitle>
-        <ProductList products={keyboards} />
+        <SectionTitle>Mouses</SectionTitle>
+        <ProductList products={mouses} />
       </div>
 
       <div>
         <PromoBanner
           src="/banner-home-03.png"
-          alt="Até 55% de desconto em mouses"
+          alt="Até 20% de desconto em fones"
         />
       </div>
 
       <div>
-        <SectionTitle>Mouses</SectionTitle>
-        <ProductList products={mouses} />
+        <SectionTitle>Headphones</SectionTitle>
+        <ProductList products={headphones} />
       </div>
     </div>
   );

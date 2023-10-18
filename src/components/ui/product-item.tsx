@@ -1,0 +1,35 @@
+import { Product } from "@prisma/client";
+
+import Image from "next/image"
+
+interface ProductItemProps {
+    product: Product
+}
+
+const ProductItem = ({product}: ProductItemProps) => {
+    return ( 
+        <div className="flex flex-col max-w-[156px] gap-4">
+            <div className="flex h-[170px] w-[156px] items-center justify-center bg-accent rounded-lg">
+                <Image 
+                    src={product.imageUrls[0]} 
+                    height={0}
+                    width={0}
+                    sizes="100vw"
+                    className="h-auto max-h-[70%] w-auto max-w-[80%]"
+                    style={{
+                        objectFit:  "contain"
+                    }}
+                    alt={product.name}
+                />
+            </div>
+
+            <div>
+                <p className="w-full text-sm overflow-hidden whitespace-nowrap text-ellipsis">
+                    {product.name}
+                </p>
+            </div>
+        </div>
+    );
+}
+ 
+export default ProductItem;

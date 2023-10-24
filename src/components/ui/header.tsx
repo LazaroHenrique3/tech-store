@@ -1,7 +1,11 @@
 "use client";
 import Link from "next/link";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { 
+  signIn, 
+  signOut, 
+  useSession 
+} from "next-auth/react";
 
 import {
   MenuIcon,
@@ -24,6 +28,8 @@ import {
 import { Button } from "./button";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Separator } from "./separator";
+
+import Cart from "./cart";
 
 const Header = () => {
   const { status, data } = useSession();
@@ -132,9 +138,17 @@ const Header = () => {
         </h1>
       </Link>
 
-      <Button size="icon" variant="outline">
-        <ShoppingCartIcon />
-      </Button>
+      <Sheet>
+        <SheetTrigger>
+          <Button size="icon" variant="outline">
+            <ShoppingCartIcon />
+          </Button>
+        </SheetTrigger>
+
+        <SheetContent>
+          <Cart/>
+        </SheetContent>
+      </Sheet>
     </Card>
   );
 };

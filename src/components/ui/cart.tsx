@@ -14,16 +14,14 @@ const Cart = () => {
   const { products, subTotal, total, totalDiscount } = useContext(CartContext);
 
   const handleShippingClick = async () => {
-    const checkout = await createCheckout(products)
+    const checkout = await createCheckout(products);
 
-    const stripe = await loadStripe(
-      process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY
-    )
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
     stripe?.redirectToCheckout({
-      sessionId: checkout.id
-    })
-  }
+      sessionId: checkout.id,
+    });
+  };
 
   return (
     <div className="flex h-full flex-col gap-8">
@@ -52,37 +50,42 @@ const Cart = () => {
         </ScrollArea>
       </div>
 
-      <div className="flex flex-col gap-3">
-        <Separator />
+      {products.length > 0 && (
+        <div className="flex flex-col gap-3">
+          <Separator />
 
-        <div className="flex items-center justify-between text-xs">
-          <p>SubTotal</p>
-          <p>R$ {subTotal.toFixed(2)}</p>
+          <div className="flex items-center justify-between text-xs">
+            <p>SubTotal</p>
+            <p>R$ {subTotal.toFixed(2)}</p>
+          </div>
+
+          <div className="flex items-center justify-between text-xs">
+            <p>Entrega</p>
+            <p>Grátis</p>
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center justify-between text-xs">
+            <p>Descontos</p>
+            <p>- R$ {totalDiscount.toFixed(2)}</p>
+          </div>
+
+          <Separator />
+
+          <div className="flex items-center justify-between text-xs font-bold">
+            <p>Total</p>
+            <p>R$ {total.toFixed(2)}</p>
+          </div>
+
+          <Button
+            className="mt-7 font-bold uppercase"
+            onClick={handleShippingClick}
+          >
+            Finalizar compra
+          </Button>
         </div>
-
-        <div className="flex items-center justify-between text-xs">
-          <p>Entrega</p>
-          <p>Grátis</p>
-        </div>
-
-        <Separator />
-
-        <div className="flex items-center justify-between text-xs">
-          <p>Descontos</p>
-          <p>- R$ {totalDiscount.toFixed(2)}</p>
-        </div>
-
-        <Separator />
-
-        <div className="flex items-center justify-between text-xs font-bold">
-          <p>Total</p>
-          <p>R$ {total.toFixed(2)}</p>
-        </div>
-
-        <Button className="mt-7 font-bold uppercase" onClick={handleShippingClick}>
-          Finalizar compra
-        </Button>
-      </div>
+      )}
     </div>
   );
 };

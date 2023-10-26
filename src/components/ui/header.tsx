@@ -11,6 +11,7 @@ import {
   ListOrderedIcon,
   HomeIcon,
   LogOutIcon,
+  PackageSearchIcon,
 } from "lucide-react";
 
 import { Card } from "./card";
@@ -104,6 +105,18 @@ const Header = () => {
                 >
                   <HomeIcon size={16} />
                   Início
+                </Button>
+              </Link>
+            </SheetClose>
+
+            <SheetClose asChild>
+              <Link href="/orders">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-1"
+                >
+                  <PackageSearchIcon size={16} />
+                  Meus Pedidos
                 </Button>
               </Link>
             </SheetClose>

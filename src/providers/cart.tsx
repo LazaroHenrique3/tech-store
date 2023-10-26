@@ -32,31 +32,37 @@ export const CartContext = createContext<ICartContext>({
   addProductToCart: () => {},
   decreaseProductQuantity: () => {},
   increaseProductQuantity: () => {},
-  removeProductFromCart: () => {}
+  removeProductFromCart: () => {},
 });
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<CartProduct[]>(
-    JSON.parse(localStorage.getItem("@tech-store/cart-products") || "[]")
-  );
+  const [products, setProducts] = useState<CartProduct[]>([]);
 
   useEffect(() => {
-    localStorage.setItem("@tech-store/cart-products", JSON.stringify(products))
-  }, [products])
+    setProducts(
+      JSON.parse(localStorage.getItem("@fsw-store/cart-products") || "[]"),
+    );
+  }, []);
 
+  useEffect(() => {
+    localStorage.setItem("@fsw-store/cart-products", JSON.stringify(products));
+  }, [products]);
+
+  //Total sem descontos
   const subTotal = useMemo(() => {
     return products.reduce((acc, product) => {
-        return acc + Number(product.basePrice) * product.quantity
-    }, 0)
-  }, [products])
+      return acc + Number(product.basePrice) * product.quantity;
+    }, 0);
+  }, [products]);
 
+  //Total com descontos
   const total = useMemo(() => {
     return products.reduce((acc, product) => {
-        return acc + product.totalPrice * product.quantity
-    }, 0)
-  }, [products])
+      return acc + product.totalPrice * product.quantity;
+    }, 0);
+  }, [products]);
 
-  const totalDiscount = total - subTotal
+  const totalDiscount = total - subTotal;
 
   const addProductToCart = (product: CartProduct) => {
     const productIsAlreadyOnCart = products.some(
@@ -87,16 +93,18 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   const decreaseProductQuantity = (productId: string) => {
     //Se a quantidade for 1 remove o produto do carrinho, caso contrário remove -1
     setProducts((prev) =>
-      prev.map((cartProduct) => {
-        if (cartProduct.id === productId) {
-          return {
-            ...cartProduct,
-            quantity: cartProduct.quantity - 1,
-          };
-        }
+      prev
+        .map((cartProduct) => {
+          if (cartProduct.id === productId) {
+            return {
+              ...cartProduct,
+              quantity: cartProduct.quantity - 1,
+            };
+          }
 
-        return cartProduct;
-      }).filter((cartProduct) => cartProduct.quantity > 0),
+          return cartProduct;
+        })
+        .filter((cartProduct) => cartProduct.quantity > 0),
     );
   };
 
@@ -116,8 +124,10 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeProductFromCart = (productId: string) => {
-    setProducts((prev) => prev.filter((cartProduct) => cartProduct.id !== productId))
-  }
+    setProducts((prev) =>
+      prev.filter((cartProduct) => cartProduct.id !== productId),
+    );
+  };
 
   return (
     <CartContext.Provider
@@ -132,7 +142,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         cartTotalDiscount: 0,
         total,
         subTotal,
-        totalDiscount
+        totalDiscount,
       }}
     >
       {children}

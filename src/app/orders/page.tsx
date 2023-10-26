@@ -3,7 +3,7 @@ import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
 import { PackageSearchIcon } from "lucide-react";
 import { getServerSession } from "next-auth/next";
-import OrderItem from "./components/order-items";
+import OrderItem from "./components/order-item";
 
 const OrderPage = async () => {
   const user = getServerSession(authOptions);
@@ -17,7 +17,11 @@ const OrderPage = async () => {
       userId: (user as any).id,
     },
     include: {
-      orderProducts: true,
+      orderProducts: {
+        include: {
+            product: true
+        }
+      },
     },
   });
 

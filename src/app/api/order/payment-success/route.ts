@@ -7,7 +7,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
 });
 
 export const POST = async (request: Request) => {
-  console.log("Cabo o freeeeeio")
   const signature = request.headers.get("stripe-signature");
 
   if (!signature) {
@@ -30,7 +29,6 @@ export const POST = async (request: Request) => {
       },
     );
     const lineItems = sessionWithLineItems.line_items;
-      console.log(lineItems)
     // CRIAR PEDIDO
   }
 

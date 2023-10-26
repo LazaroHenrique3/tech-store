@@ -18,13 +18,13 @@ const Cart = () => {
 
   const handleShippingClick = async () => {
     if(!data?.user) {
-      //Redirecionar para o login 
+      //TODO: Redirecionar para o login 
       return
     }
 
-    await createOrder(products, (data?.user as any).id)
-    
-    const checkout = await createCheckout(products);
+    const order = await createOrder(products, (data?.user as any).id)
+
+    const checkout = await createCheckout(products, order.id);
 
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 

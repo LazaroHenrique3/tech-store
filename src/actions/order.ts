@@ -5,7 +5,7 @@ import { CartProduct } from "@/providers/cart";
 
 export const createOrder = async (cartProducts: CartProduct[], userId: string) => {
 
-    await prismaClient.order.create({
+    return await prismaClient.order.create({
         data: {
             userId,
             status: 'WAYTING_FOR_PAYMENT',

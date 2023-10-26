@@ -1,11 +1,7 @@
 "use client";
 import Link from "next/link";
 
-import { 
-  signIn, 
-  signOut, 
-  useSession 
-} from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 import {
   MenuIcon,
@@ -112,10 +108,17 @@ const Header = () => {
               </Link>
             </SheetClose>
 
-            <Button variant="outline" className="w-full justify-start gap-1">
-              <PercentIcon size={16} />
-              Ofertas
-            </Button>
+            <SheetClose asChild>
+              <Link href="/deals">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-1"
+                >
+                  <PercentIcon size={16} />
+                  Ofertas
+                </Button>
+              </Link>
+            </SheetClose>
 
             <SheetClose asChild>
               <Link href="/catalog">
@@ -146,7 +149,7 @@ const Header = () => {
         </SheetTrigger>
 
         <SheetContent className="w-[350px]">
-          <Cart/>
+          <Cart />
         </SheetContent>
       </Sheet>
     </Card>

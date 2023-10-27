@@ -19,6 +19,7 @@ const Cart = () => {
   const handleShippingClick = async () => {
     if(!data?.user) {
       //TODO: Redirecionar para o login 
+      alert("Realize o login")
       return
     }
 

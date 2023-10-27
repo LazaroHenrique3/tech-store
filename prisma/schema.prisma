@@ -39,11 +39,11 @@ model Order {
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @default(now()) @updatedAt
   shippingPrice Decimal        @default(0) @db.Decimal(8, 2) 
-  status        OrderStatus    @default(WAYTING_FOR_PAYMENT)
+  status        OrderStatus    @default(WAITING_FOR_PAYMENT)
 }
 
 enum OrderStatus {
-  WAYTING_FOR_PAYMENT
+  WAITING_FOR_PAYMENT
   PAYMENT_CONFIRMED
 }
 

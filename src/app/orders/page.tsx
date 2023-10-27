@@ -2,25 +2,30 @@ import { Badge } from "@/components/ui/badge";
 import { authOptions } from "@/lib/auth";
 import { prismaClient } from "@/lib/prisma";
 import { PackageSearchIcon } from "lucide-react";
-import { getServerSession } from "next-auth/next";
+import { getServerSession } from "next-auth";
 import OrderItem from "./components/order-item";
 
-const OrderPage = async () => {
-  const user = getServerSession(authOptions);
+async function OrderPage() {
+  const session = await getServerSession(authOptions);
 
-  if (!user) {
-    return <p>Usuário não autenticado</p>;
+  if (!session || !session.user) {
+    return (
+      <div className="flex h-full flex-col items-center justify-center gap-2 p-5">
+        <h2 className="font-bold">Acesso Negado!</h2>
+        <p className="text-sm opacity-60">Faça login para ver seus pedidos</p>
+      </div>
+    );
   }
 
   const orders = await prismaClient.order.findMany({
     where: {
-      userId: (user as any).id,
+      userId: (session.user as any).id,
     },
     include: {
       orderProducts: {
         include: {
-            product: true
-        }
+          product: true,
+        },
       },
     },
   });

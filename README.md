@@ -29,6 +29,47 @@ Este projeto de e-commerce foi concebido durante a Full Stack Week, inspirado pe
 
 ### #1 - Home
 <p align="center">
-  <img align="center" src="https://github.com/LazaroHenrique3/lazaro-fernandes-art-ecommerce/assets/78514404/a30fbb10-6012-4333-80b7-527e1c31378a" alt="home" width="800"/>
+  <img align="center" src="https://github.com/LazaroHenrique3/tech-store/assets/78514404/f1296045-b0ba-4ba7-9a0f-ff60f4189ca1" alt="home" width="300"/>
 </p>
+
+### #2 - Menu
+<p align="center">
+  <img align="center" src="https://github.com/LazaroHenrique3/tech-store/assets/78514404/9139b319-8e12-4f1a-846a-9ba98eb4b402" alt="menu" width="300"/>
+</p>
+
+### #3 - Meus Pedidos
+<p align="center">
+  <img align="center" src="https://github.com/LazaroHenrique3/tech-store/assets/78514404/2395c9b1-ae18-43b6-93cb-9a264280748f" alt="meus-pedidos" width="300"/>
+</p>
+
+### #4 - Ofertas
+<p align="center">
+  <img align="center" src="https://github.com/LazaroHenrique3/tech-store/assets/78514404/0c67ce87-f92c-48ba-9a30-74842ab54f22" alt="ofertas" width="300"/>
+</p>
+
+### #4 - Catálogo
+<p align="center">
+  <img align="center" src="https://github.com/LazaroHenrique3/tech-store/assets/78514404/ae484159-e192-4e50-8f95-312bcb400c75" alt="catalogo" width="300"/>
+</p>
+
+### #5 - Produto
+<p align="center">
+  <img align="center" src="https://github.com/LazaroHenrique3/tech-store/assets/78514404/f40fc294-3ef7-4546-af49-6fdfe978a582" alt="produto" width="300"/>
+</p>
+
+### #7 - Carrinho
+<p align="center">
+  <img align="center" src="https://github.com/LazaroHenrique3/tech-store/assets/78514404/df50b597-3cd8-42bf-846e-9945920dc2e3" alt="carrinho" width="300"/>
+</p>
+
+### #8 - Stripe
+<p align="center">
+  <img align="center" src="https://github.com/LazaroHenrique3/tech-store/assets/78514404/35ecf084-6412-4fbb-9a60-ef184e1d718e" alt="carrinho" width="300"/>
+</p>
+
+## ✒️ Autor
+
+* **Felipe Rocha**
+* **Lázaro Henrique**  
+
 
